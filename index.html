@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="favicon.png" type="image/png">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Northern Light Research Station | Real-Time Aurora Borealis Monitor & NOAA Space Weather
+</title>
+
+
+<meta name="description" content="
+Northern Light Research Station is an interactive Aurora Borealis monitoring dashboard using NOAA space weather data. Track solar wind speed, density, geomagnetic activity, Kp index and aurora probability in real time.
+">
+
+
+<meta name="keywords" content="
+aurora borealis,
+northern lights,
+NOAA space weather,
+solar wind monitoring,
+Kp index,
+geomagnetic storm,
+aurora forecast,
+space weather dashboard,
+solar activity,
+Northern Light Research Station
+">
+
+
+<meta name="author" content="SkyCortex">
+
+
+<!-- SEO Robots -->
+<meta name="robots" content="index, follow">
+
+
+<!-- Canonical -->
+<link rel="canonical" href="https://TU-USUARIO.github.io/TU-REPOSITORY/">
+
+
+
+<!-- Open Graph (Facebook / Discord / LinkedIn) -->
+
+<meta property="og:title" content="Northern Light Research Station | Aurora Monitor">
+
+<meta property="og:description" content="
+Explore live NOAA space weather data and monitor solar wind conditions, geomagnetic activity and aurora probability.
+">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPOSITORY/images/aurora-preview.png">
+
+<meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPOSITORY/">
+
+
+
+<!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Northern Light Research Station | Aurora Monitor">
+
+<meta name="twitter:description" content="
+Interactive aurora borealis dashboard powered by NOAA space weather data.
+">
+
+<meta name="twitter:image" content="https://TU-USUARIO.github.io/TU-REPOSITORY/images/aurora-preview.png">
+
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Northern Light Research Station",
+ "description": "Interactive Aurora Borealis monitoring dashboard using NOAA space weather data.",
+ "applicationCategory": "Science",
+ "operatingSystem": "Web",
+ "creator": {
+   "@type": "Organization",
+   "name": "SkyCortex"
+ }
+}
+</script>
+</head>
+
+<!--
+
+============================================================
+
+NORTHERN LIGHT RESEARCH STATION
+Interactive Aurora Borealis Monitoring Laboratory
+
+Part of the Maneko Neki Universe
+Digital Art & Web Design Laboratory
+Created by SkyCortex
+
+============================================================
+
+PROJECT CONCEPT:
+
+Northern Light Research Station is an interactive digital
+experience that explores the connection between science,
+mythology, symbolism and visual storytelling.
+
+This project belongs to the Maneko Neki Universe, a creative
+world that combines digital art, narrative experiences,
+tarot-inspired readings, astrology and astronomy.
+
+Within this universe, the Aurora Research Station represents
+the exploration of the sky through both scientific observation
+and symbolic interpretation.
+
+
+============================================================
+
+SCIENCE + SYMBOLISM CONNECTION:
+
+The project creates a bridge between two ways of understanding
+the cosmos:
+
+Astronomy:
+The scientific study of celestial objects, space phenomena
+and measurable cosmic events.
+
+Astrology:
+The symbolic interpretation of celestial movements and their
+relationship with human narratives and cultural meanings.
+
+Tarot:
+A visual storytelling system used within the Maneko Neki
+Universe to explore themes, archetypes and personal journeys.
+
+
+The Northern Light Research Station combines these perspectives
+by transforming real space weather information into an artistic
+and interactive experience.
+
+
+============================================================
+
+SCIENTIFIC DATA SOURCE:
+
+The application connects with NOAA (National Oceanic and
+Atmospheric Administration) space weather services to visualize:
+
+- Solar Wind Speed
+- Solar Wind Density
+- Solar Wind Temperature
+- Planetary Kp Index
+- Interplanetary Magnetic Field (IMF Bz)
+- Aurora Visibility Probability
+
+
+Real astronomical data becomes part of a creative narrative
+experience.
+
+
+============================================================
+
+EDUCATIONAL PURPOSE:
+
+This project is designed for university students studying:
+
+- Digital Art
+- Web Design
+- Creative Coding
+- Interactive Media
+- Data Visualization
+- Front-End Development
+- Digital Storytelling
+
+
+Students explore how technology can transform scientific
+information into immersive visual experiences.
+
+
+============================================================
+
+PROGRAMMING LANGUAGES & TECHNOLOGIES:
+
+HTML5
+- Semantic structure
+- Accessibility
+- SEO optimization
+
+
+CSS3
+- Interface design
+- Responsive layouts
+- Visual atmosphere
+- Animations and effects
+
+
+JavaScript ES6+
+- API communication
+- Real-time data processing
+- Dynamic visualization
+- Interactive elements
+
+
+External Technology:
+
+NOAA Space Weather API
+- Real-time astronomical data
+- Solar activity monitoring
+
+
+============================================================
+
+LEARNING OBJECTIVES:
+
+Students learn:
+
+✓ How to connect websites with scientific APIs
+
+✓ How to visualize real-world data
+
+✓ How programming can support artistic expression
+
+✓ How astronomy and technology can inspire digital narratives
+
+✓ How interactive design can create educational experiences
+
+
+============================================================
+
+PROJECT CATEGORY:
+
+Maneko Neki Universe
+Creative Technology Laboratory
+Interactive Web Experience
+Scientific Data Visualization
+Digital Art Experiment
+
+
+============================================================
+
+PROJECT STATUS:
+
+Currently under development.
+
+Northern Light Research Station is an evolving digital
+experiment within the Maneko Neki Universe. New features,
+visual improvements and interactive elements are continuously
+being developed as the project expands.
+
+
+============================================================
+
+-->
+
+
+<style>
+
+body{
+
+    background:#f8fafc;
+
+    color:#0f172a;
+
+    font-family:Arial, sans-serif;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+
+/* ==========================================
+   MAIN DASHBOARD
+========================================== */
+
+
+.dashboard{
+
+    width:min(1200px,95%);
+
+    margin:70px auto;
+
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+
+.logo-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+
+.logo-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(167,216,242,.35),
+        transparent 70%
+    );
+
+    filter:blur(20px);
+
+    z-index:0;
+
+}
+
+
+
+.logo{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid #D8EAF3;
+
+    background:white;
+
+    padding:14px;
+
+    box-shadow:
+
+    0 15px 35px rgba(80,120,150,.18),
+
+    0 0 40px rgba(167,216,242,.35);
+
+}
+
+
+
+/* ==========================================
+   DASHBOARD GRID
+========================================== */
+
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+
+/* ==========================================
+   INFORMATION CARDS
+========================================== */
+
+
+.info-card{
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+
+}
+
+
+
+.info-card h2,
+.info-card h3{
+
+    margin-bottom:15px;
+
+    font-size:1.1rem;
+
+}
+
+
+
+.value{
+
+    font-size:2.4rem;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.info-card p{
+
+    font-size:.95rem;
+
+    color:#475569;
+
+}
+
+
+
+/* ==========================================
+   STATUS PANEL
+========================================== */
+
+
+#status{
+
+    color:#059669;
+
+    font-weight:bold;
+
+}
+
+
+
+/* ==========================================
+   NOAA DEBUG
+========================================== */
+
+
+pre{
+
+    width:min(1200px,95%);
+
+    margin:40px auto;
+
+    background:#0f172a;
+
+    color:#e2e8f0;
+
+    text-align:left;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    overflow:auto;
+
+}
+
+/* EARTH */
+
+.earth-wrapper{
+    position:relative;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #e2e8f0;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.earth-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:spinEarth 120s linear infinite;
+}
+
+/* SLOW REALISTIC ROTATION */
+@keyframes spinEarth{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* GRID LINES */
+.grid{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.grid::before,
+.grid::after{
+    content:"";
+    position:absolute;
+    background:rgba(0,0,0,0.2);
+}
+
+.grid::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+}
+
+.grid::after{
+    left:50%;
+    top:0;
+    width:1px;
+    height:100%;
+}
+
+/* LABELS */
+
+.label{
+    position:absolute;
+    font-size:0.8rem;
+    color:#475569;
+    background:rgba(255,255,255,0.8);
+    padding:4px 8px;
+    border-radius:6px;
+}
+
+.equator{
+    top:50%;
+    left:10px;
+    transform:translateY(-50%);
+}
+
+.greenwich{
+    left:50%;
+    top:10px;
+    transform:translateX(-50%);
+}
+
+/* TIME PANEL */
+
+.time-panel{
+    background:white;
+    border:1px solid #e2e8f0;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:220px;
+}
+
+.time-title{
+    font-size:1rem;
+    margin-bottom:10px;
+    color:#64748b;
+}
+
+.time-value{
+    font-size:1.6rem;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.date-value{
+    margin-top:10px;
+    color:#475569;
+}
+
+.aurora-map{
+    width:min(1200px,95%);
+    margin:90px auto;
+    text-align:center;
+}
+
+.map-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+    .development-banner{
+
+    width:min(900px,90%);
+
+    margin:20px auto;
+
+    padding:15px 25px;
+
+    background:white;
+
+    border:1px solid #dbeafe;
+
+    border-radius:15px;
+
+    color:#334155;
+
+    font-size:.95rem;
+
+    line-height:1.6;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,.05);
+
+}
+
+    /* ==========================================
+   FOOTER
+========================================== */
+
+.footer{
+
+    margin-top:90px;
+
+    padding:60px 20px;
+
+    background:#ffffff;
+
+    border-top:1px solid #E2E8F0;
+
+}
+
+
+.footer-container{
+
+    width:min(1200px,95%);
+
+    margin:auto;
+
+}
+
+
+.footer .section-title{
+
+    margin-bottom:15px;
+
+}
+
+
+.footer .section-description{
+
+    max-width:900px;
+
+    margin:0 auto 50px auto;
+
+    line-height:1.8;
+
+    color:#64748B;
+
+}
+
+
+/* COPYRIGHT */
+
+.footer-copy{
+
+    margin-top:50px;
+
+    padding-top:30px;
+
+    border-top:1px solid #E2E8F0;
+
+    text-align:center;
+
+    font-size:.9rem;
+
+    line-height:1.8;
+
+    color:#64748B;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+  <div class="gtranslate_wrapper"></div>
+
+  <script>
+    window.gtranslateSettings = {
+      "default_language": "es",
+      "languages": [
+        "es", "en", "pt", "fr", "de",
+        "it", "ru", "ar", "zh-CN"
+      ],
+      "wrapper_selector": ".gtranslate_wrapper"
+    };
+  </script>
+
+  <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
+<header>
+
+<div class="development-banner">
+
+🚧 Northern Light Research Station is currently under development.
+
+<br><br>
+
+Live space weather information is being received from NOAA
+Space Weather Prediction Center (SWPC).
+
+<br><br>
+
+The station currently monitors:
+Solar Wind Speed, Plasma Temperature, Density,
+Planetary Kp Index, IMF Bz, and Aurora Probability.
+
+<br><br>
+
+🌍 Geomagnetic monitoring data currently includes
+8 = Number of geomagnetic stations contributing data to the planetary Kp index.
+
+</div>
+    
+<div class="logo-wrapper">
+
+<img 
+src="space-cat.png"
+alt="Northern Light Research Station Logo"
+class="logo">
+
+</div>
+
+<h1>
+🌌 Northern Light Research Station
+</h1>
+
+<p class="subtitle">
+Real-Time Space Weather & Aurora Monitoring System
+</p>
+
+</header>
+
+
+<section class="dashboard-grid">
+
+
+<!-- SOLAR WIND SPEED -->
+
+<div class="info-card">
+
+<h3>☀️ Solar Wind Speed</h3>
+
+<div id="speed" class="value">
+Loading...
+</div>
+
+<p>
+Velocity of charged solar particles traveling from the Sun toward Earth.
+</p>
+
+</div>
+
+
+
+<!-- TEMPERATURE -->
+
+<div class="info-card">
+
+<h3>🌡 Proton Temperature</h3>
+
+<div id="temperature" class="value">
+Loading...
+</div>
+
+<p>
+Thermal energy of the solar wind plasma environment.
+</p>
+
+</div>
+
+
+
+<!-- DENSITY -->
+
+<div class="info-card">
+
+<h3>💨 Solar Wind Density</h3>
+
+<div id="density" class="value">
+Loading...
+</div>
+
+<p>
+Concentration of charged particles detected near Earth.
+</p>
+
+</div>
+
+
+
+<!-- Kp -->
+
+<div class="info-card">
+
+<h3>🌍 Planetary Kp Index</h3>
+
+<div id="kp" class="value">
+Loading...
+</div>
+
+<p>
+Global measurement of geomagnetic disturbance activity.
+</p>
+
+</div>
+
+
+
+<!-- IMF -->
+
+<div class="info-card">
+
+<h3>🧲 IMF Bz</h3>
+
+<div id="bz" class="value">
+Loading...
+</div>
+
+<p>
+Magnetic field direction influencing auroral activity.
+</p>
+
+</div>
+
+
+
+<!-- AURORA -->
+
+<div class="info-card">
+
+<h3>🌌 Aurora Probability</h3>
+
+<div id="auroraProbability" class="value">
+Calculating...
+</div>
+
+<p>
+Estimated aurora visibility based on current solar conditions.
+</p>
+
+</div>
+
+
+
+<!-- STATIONS -->
+
+<div class="info-card">
+
+<h3>📡 Stations Reporting</h3>
+
+<div id="stations" class="value">
+Loading...
+</div>
+
+<p>
+Number of monitoring stations contributing geomagnetic data.
+</p>
+
+</div>
+
+
+
+<!-- A RUNNING -->
+
+<div class="info-card">
+
+<h3>📈 A Running Index</h3>
+
+<div id="arunning" class="value">
+Loading...
+</div>
+
+<p>
+Short-term geomagnetic activity measurement.
+</p>
+
+</div>
+
+
+
+<!-- SATELLITE -->
+
+<div class="info-card">
+
+<h3>🛰 Satellite Source</h3>
+
+<div id="source" class="value">
+Loading...
+</div>
+
+<p>
+NOAA spacecraft data source providing measurements.
+</p>
+
+</div>
+
+
+
+<!-- UPDATE -->
+
+<div class="info-card">
+
+<h3>🕒 NOAA Last Update</h3>
+
+<div id="time" class="value">
+Loading...
+</div>
+
+<p>
+Timestamp of the latest received space weather data.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<section class="connection-panel">
+
+
+<h2>
+🟢 System Status
+</h2>
+
+
+<div id="status">
+
+Connecting to NOAA...
+
+</div>
+
+
+</section>
+
+
+
+<section class="debug-panel">
+
+
+<h3>
+🔬 NOAA Raw Data
+</h3>
+
+
+<pre id="data">
+Waiting...
+</pre>
+    
+</section>
+
+<section class="earth-module">
+
+    <h2 class="section-title">Earth Observation System</h2>
+
+<p>
+Real-time Earth monitoring with satellite imagery,solar illumination, geographic coordinates, and planetary data.
+</p>
+
+    <div class="earth-container">
+
+        <!-- LIVE EARTH -->
+        <!-- ==========================================
+     EARTH OBSERVATION VISUAL SYSTEM
+========================================== -->
+
+<div class="earth-wrapper">
+
+    <!-- LIVE EARTH IMAGE -->
+    <img 
+    class="earth"
+    src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+    alt="Live Earth Observation Satellite Image">
+
+
+    <!-- DAYLIGHT GLOW -->
+    <div class="sun-glow"></div>
+
+
+    <!-- NIGHT SIDE SHADOW -->
+    <div class="night-shadow"></div>
+
+
+    <!-- GEOGRAPHIC GRID -->
+    <div class="grid"></div>
+
+
+    <!-- EARTH LABELS -->
+
+    <div class="earth-label equator-label">
+        Equator 0°
+    </div>
+
+
+    <div class="earth-label greenwich-label">
+        Greenwich 0°
+    </div>
+
+
+    <!-- MOON INDICATOR -->
+
+    <div class="moon-indicator">
+
+        🌙
+
+    </div>
+
+
+</div>
+
+        <!-- TIME PANEL -->
+        <!-- =====================================
+     EARTH SYSTEM DATA PANEL
+===================================== -->
+
+<div class="time-panel">
+
+    <div class="time-title">
+        Earth Observation Status
+    </div>
+
+
+    <div id="liveTime" class="time-value">
+        --
+    </div>
+
+
+    <div id="liveDate" class="date-value">
+        --
+    </div>
+
+
+    <hr>
+
+
+    <p>
+        ☀️ Sun Status:
+        <strong id="sunStatus">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌙 Moon Phase:
+        <strong id="moonPhase">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌑 Darkness Level:
+        <strong id="darknessLevel">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🛰 Station:
+        <strong>
+            ONLINE
+        </strong>
+    </p>
+
+</div>
+
+    </div>
+
+    <section class="aurora-map">
+
+    <h3 class="section-title">Aurora Monitoring Station</h3>
+
+ <p>
+Monitoring geomagnetic activity, solar wind conditions,
+and Aurora Borealis visibility opportunities.
+</p>
+
+    <div class="map-container">
+
+        <!-- WORLD MAP -->
+        <div class="world-map">
+
+            <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            alt="World Map">
+
+            <!-- AURORA ZONES -->
+
+            <div class="aurora-band band1"></div>
+            <div class="aurora-band band2"></div>
+            <div class="aurora-band band3"></div>
+
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="map-info">
+
+            <h3>Current Aurora Zone</h3>
+
+            <div id="auroraZone" class="zone-value">--</div>
+
+            <p id="auroraExplanation">
+                Waiting for space weather data...
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+     OBSERVATION LOCATION
+========================================== -->
+
+<div class="research-card">
+
+    <h3>
+        📍 Aurora Observation Location
+    </h3>
+
+
+    <p>
+        Station:
+        <strong>
+            Tromsø, Norway
+        </strong>
+    </p>
+
+
+    <p>
+        Latitude:
+        <strong>
+            69.6492° N
+        </strong>
+    </p>
+
+
+    <p>
+        Longitude:
+        <strong>
+            18.9553° E
+        </strong>
+    </p>
+
+
+    <p>
+        Region:
+        <strong>
+            Arctic Aurora Zone
+        </strong>
+    </p>
+ </div>
+
+</div>
+
+ <footer class="footer">
+
+<div class="footer-container">
+
+    <h2 class="section-title">
+        Northern Light Research Station
+    </h2>
+
+    <p class="section-description">
+
+        A real-time space weather monitoring platform providing live solar
+        and geomagnetic observations from the NOAA Space Weather Prediction Center (SWPC).
+        The station continuously analyzes solar wind conditions, geomagnetic activity,
+        and auroral indicators to support research, education, and public awareness.
+
+    </p>
+
+
+    <div class="dashboard-grid">
+
+        <!-- PROJECT -->
+
+        <div class="info-card">
+
+            <h3>🎓 Project</h3>
+
+            <p>
+
+                Northern Light Research Station is an original university
+                research project focused on real-time space weather visualization
+                and aurora monitoring.
+
+            </p>
+
+        </div>
+
+
+        <!-- DATA -->
+
+        <div class="info-card">
+
+            <h3>🛰 Live Data Source</h3>
+
+            <p>
+
+                Live scientific observations are received directly from the
+                NOAA Space Weather Prediction Center (SWPC), including solar wind,
+                geomagnetic indices, and interplanetary magnetic field measurements.
+
+            </p>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="info-card">
+
+            <h3>📍 Development Location</h3>
+
+            <p>
+
+                San José, Costa Rica
+
+            </p>
+
+        </div>
+
+
+        <!-- SYSTEM -->
+
+        <div class="info-card">
+
+            <h3>🌌 Monitoring Systems</h3>
+
+            <p>
+
+                Solar Wind • Planetary Kp Index • IMF Bz •
+                Aurora Probability • Earth Observation
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-copy">
+
+        © 2026 Gloria Martínez.
+
+        <br><br>
+
+        Northern Light Research Station is an original university project.
+
+        All software, dashboard design, artwork, visual identity,
+        and proprietary systems are the intellectual property
+        of the creator.
+
+    </div>
+
+</div>
+
+</footer>
+
+</section>
+
+
+<script>
+let auroraData = {
+
+    speed:0,
+    density:0,
+    kp:0,
+    bz:0,
+
+    solarWindOK:false,
+    kpOK:false,
+    bzOK:false
+
+}; 
+
+
+
+
+async function getSolarWind(){
+
+    
+
+    try{
+
+
+        const response = await fetch(
+        "https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json"
+        );
+
+        alert("NOAA response received");
+
+        if(!response.ok){
+
+            throw new Error(
+            "NOAA server error: " + response.status
+            );
+
+        }
+
+
+        const data = await response.json();
+
+        
+
+        const latest = data[data.length - 1];
+
+        
+
+        auroraData.speed = latest.proton_speed;
+
+        auroraData.density = latest.proton_density;
+
+        auroraData.solarWindOK = true;
+
+        
+      document.getElementById("speed").innerHTML =
+      latest.proton_speed + " km/s";
+
+     
+
+      document.getElementById("temperature").innerHTML =
+      latest.proton_temperature + " K";
+
+
+      document.getElementById("density").innerHTML =
+      latest.proton_density + " p/cm³";
+
+
+      document.getElementById("source").innerHTML =
+      latest.source;
+
+
+      document.getElementById("time").innerHTML =
+       latest.time_tag;
+
+
+        document.getElementById("status").innerHTML =
+        `
+        Connected to NOAA<br>
+        Last update: ${latest.time_tag}
+        `;
+
+
+        document.getElementById("data").textContent =
+        JSON.stringify(latest,null,2);
+
+       
+
+    }
+
+
+   
+    catch(error){
+
+    auroraData.solarWindOK = false;
+
+    document.getElementById("status").innerHTML =
+    "❌ Connection failed";
+
+    document.getElementById("data").textContent =
+    error.message;
+
+}
+
+
+}
+
+async function getKpIndex(){
+
+
+    try{
+
+
+        const response = await fetch(
+        "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+        );
+
+
+        const data = await response.json();
+
+
+        const latest = data[data.length - 1];
+
+        auroraData.kp = latest.Kp;
+
+        auroraData.kpOK = true;
+
+        document.getElementById("kp").innerHTML =
+        latest.Kp;
+
+
+        document.getElementById("stations").innerHTML =
+        latest.station_count;
+
+
+        document.getElementById("arunning").innerHTML =
+        latest.a_running;
+
+
+
+    }
+
+
+    catch(error){
+
+
+        document.getElementById("kp").innerHTML =
+        "NOAA Kp Error";
+
+
+        console.error(error);
+
+        auroraData.kpOK = false;
+
+
+    }
+
+}
+
+
+
+
+
+async function getIMFBz(){
+
+
+    try{
+
+
+        const response = await fetch(
+        "https://services.swpc.noaa.gov/json/rtsw/rtsw_mag_1m.json"
+        );
+
+
+        if(!response.ok){
+
+            throw new Error(
+            "NOAA IMF server error: " + response.status
+            );
+
+        }
+
+
+        const data = await response.json();
+
+
+        const latest = data[data.length - 1];
+
+        auroraData.bz = latest.bz_gsm;
+
+        auroraData.bzOK = true;
+
+     document.getElementById("bz").innerHTML =
+     latest.bz_gsm + " nT";
+
+
+
+    }
+
+
+    catch(error){
+
+
+        document.getElementById("bz").innerHTML =
+        "NOAA IMF Error: " + error.message;
+
+
+        console.error(error);
+
+        auroraData.bzOK = false;
+
+
+    }
+
+}
+
+    function calculateAuroraProbability(){
+
+   if(!auroraData.solarWindOK ||
+   !auroraData.kpOK ||
+   !auroraData.bzOK){
+
+    document.getElementById("auroraProbability").innerHTML =
+    "Waiting for complete NOAA data";
+
+    return;
+
+}
+
+
+    let score = 0;
+
+
+    // Solar Wind Speed
+
+    if(auroraData.speed > 500){
+
+        score += 30;
+
+    }
+
+    else if(auroraData.speed > 400){
+
+        score += 20;
+
+    }
+
+
+    // Density
+
+    if(auroraData.density > 5){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.density > 2){
+
+        score += 10;
+
+    }
+
+
+    // Kp Index
+
+    if(auroraData.kp >= 6){
+
+        score += 30;
+
+    }
+
+    else if(auroraData.kp >= 4){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.kp >= 2){
+
+        score += 10;
+
+    }
+
+
+
+    // Bz Southward
+
+    if(auroraData.bz < -5){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.bz < 0){
+
+        score += 10;
+
+    }
+
+
+
+    if(score > 100){
+
+        score = 100;
+
+    }
+
+
+    document.getElementById("auroraProbability").innerHTML =
+    score + "%";
+
+}
+
+    
+document.getElementById("status").innerHTML =
+"Starting NOAA...";
+    
+async function startAuroraStation(){
+
+    await getSolarWind();
+    await getKpIndex();
+    await getIMFBz();
+
+    calculateAuroraProbability();
+
+}
+
+startAuroraStation();
+
+setInterval(async()=>{
+
+    await getSolarWind();
+    await getKpIndex();
+    await getIMFBz();
+
+    calculateAuroraProbability();
+
+},60000);
+
+</script>
+
+
+</body>
+
+</html>
+
+
+
+----------------------------------------------
