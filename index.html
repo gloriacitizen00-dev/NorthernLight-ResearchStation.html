@@ -1,264 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" href="favicon.png" type="image/png">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
+    <!-- Primary SEO -->
+    <title>Space Research Station | Space Weather & Satellite Observation</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Space Research Station, an interactive digital laboratory by SkyCortex for space weather monitoring, NOAA scientific data visualization, auroral activity indicators, and satellite imagery.">
 
+    <meta name="keywords" content="Space Research Station, space observation, space weather, NOAA SWPC, solar wind, solar wind speed, proton density, proton temperature, planetary Kp index, IMF Bz, aurora monitoring, aurora borealis, satellite imagery, GOES-16, Earth observation, scientific data visualization, SkyCortex">
 
-<title>
-Northern Light Research Station | Real-Time Aurora Borealis Monitor & NOAA Space Weather
-</title>
+    <meta name="author" content="SkyCortex">
+    <meta name="creator" content="SkyCortex">
+    <meta name="publisher" content="SkyCortex">
 
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
-<meta name="description" content="
-Northern Light Research Station is an interactive Aurora Borealis monitoring dashboard using NOAA space weather data. Track solar wind speed, density, geomagnetic activity, Kp index and aurora probability in real time.
-">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark light">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://gloriacitizen00-dev.github.io/Space-Research-Station/">
 
-<meta name="keywords" content="
-aurora borealis,
-northern lights,
-NOAA space weather,
-solar wind monitoring,
-Kp index,
-geomagnetic storm,
-aurora forecast,
-space weather dashboard,
-solar activity,
-Northern Light Research Station
-">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
 
+    <!-- Open Graph: Facebook, LinkedIn, Discord -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Space Research Station">
+    <meta property="og:title" content="Space Research Station | A Digital Laboratory for Space Observation">
+    <meta property="og:description" content="Explore space weather observations, solar wind measurements, geomagnetic activity, auroral indicators, and satellite imagery through an interactive digital laboratory developed by SkyCortex.">
+    <meta property="og:url" content="https://gloriacitizen00-dev.github.io/Space-Research-Station/">
+    <meta property="og:image" content="https://gloriacitizen00-dev.github.io/Space-Research-Station/images/aurora-preview.png">
+    <meta property="og:image:alt" content="Space Research Station — interactive space observation and scientific data visualization platform">
+    <meta property="og:locale" content="en_US">
 
-<meta name="author" content="SkyCortex">
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Space Research Station | SkyCortex">
+    <meta name="twitter:description" content="An interactive digital laboratory for space weather monitoring, scientific data visualization, and satellite imagery.">
+    <meta name="twitter:image" content="https://gloriacitizen00-dev.github.io/Space-Research-Station/images/aurora-preview.png">
+    <meta name="twitter:image:alt" content="Space Research Station — A Digital Laboratory for Space Observation">
 
+    <!-- Structured Data: Web Application -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Space Research Station",
+        "alternateName": "Northern Light Research Station",
+        "url": "https://gloriacitizen00-dev.github.io/Space-Research-Station/",
+        "description": "An interactive digital laboratory for space observation and scientific data visualization, currently featuring an experimental space weather and auroral activity monitoring module using NOAA SWPC datasets and GOES-16 satellite imagery.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "inLanguage": "en",
+        "creator": {
+            "@type": "Organization",
+            "name": "SkyCortex"
+        },
+        "provider": {
+            "@type": "Organization",
+            "name": "SkyCortex"
+        },
+        "isAccessibleForFree": true,
+        "keywords": [
+            "Space observation",
+            "Space weather",
+            "NOAA data",
+            "Aurora monitoring",
+            "Satellite imagery",
+            "Scientific data visualization"
+        ]
+    }
+    </script>
 
-<!-- SEO Robots -->
-<meta name="robots" content="index, follow">
-
-
-<!-- Canonical -->
-<link rel="canonical" href="https://TU-USUARIO.github.io/TU-REPOSITORY/">
-
-
-
-<!-- Open Graph (Facebook / Discord / LinkedIn) -->
-
-<meta property="og:title" content="Northern Light Research Station | Aurora Monitor">
-
-<meta property="og:description" content="
-Explore live NOAA space weather data and monitor solar wind conditions, geomagnetic activity and aurora probability.
-">
-
-<meta property="og:type" content="website">
-
-<meta property="og:image" content="https://TU-USUARIO.github.io/TU-REPOSITORY/images/aurora-preview.png">
-
-<meta property="og:url" content="https://TU-USUARIO.github.io/TU-REPOSITORY/">
-
-
-
-<!-- Twitter Card -->
-
-<meta name="twitter:card" content="summary_large_image">
-
-<meta name="twitter:title" content="Northern Light Research Station | Aurora Monitor">
-
-<meta name="twitter:description" content="
-Interactive aurora borealis dashboard powered by NOAA space weather data.
-">
-
-<meta name="twitter:image" content="https://TU-USUARIO.github.io/TU-REPOSITORY/images/aurora-preview.png">
-
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="favicon.png">
-
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "WebApplication",
- "name": "Northern Light Research Station",
- "description": "Interactive Aurora Borealis monitoring dashboard using NOAA space weather data.",
- "applicationCategory": "Science",
- "operatingSystem": "Web",
- "creator": {
-   "@type": "Organization",
-   "name": "SkyCortex"
- }
-}
-</script>
 </head>
 
 <!--
+============================================================
+SPACE RESEARCH STATION
+A Digital Laboratory for Space Observation
 
+Developed by SkyCortex
 ============================================================
 
-NORTHERN LIGHT RESEARCH STATION
-Interactive Aurora Borealis Monitoring Laboratory
+PROJECT OVERVIEW:
 
-Part of the Maneko Neki Universe
-Digital Art & Web Design Laboratory
-Created by SkyCortex
+Space Research Station is an independent digital platform
+focused on space observation, scientific data visualization,
+and interactive web technologies.
 
-============================================================
+CURRENT MODULE:
 
-PROJECT CONCEPT:
+Northern Light Research Station
 
-Northern Light Research Station is an interactive digital
-experience that explores the connection between science,
-mythology, symbolism and visual storytelling.
+The current prototype explores:
 
-This project belongs to the Maneko Neki Universe, a creative
-world that combines digital art, narrative experiences,
-tarot-inspired readings, astrology and astronomy.
-
-Within this universe, the Aurora Research Station represents
-the exploration of the sky through both scientific observation
-and symbolic interpretation.
-
-
-============================================================
-
-SCIENCE + SYMBOLISM CONNECTION:
-
-The project creates a bridge between two ways of understanding
-the cosmos:
-
-Astronomy:
-The scientific study of celestial objects, space phenomena
-and measurable cosmic events.
-
-Astrology:
-The symbolic interpretation of celestial movements and their
-relationship with human narratives and cultural meanings.
-
-Tarot:
-A visual storytelling system used within the Maneko Neki
-Universe to explore themes, archetypes and personal journeys.
-
-
-The Northern Light Research Station combines these perspectives
-by transforming real space weather information into an artistic
-and interactive experience.
-
-
-============================================================
-
-SCIENTIFIC DATA SOURCE:
-
-The application connects with NOAA (National Oceanic and
-Atmospheric Administration) space weather services to visualize:
-
-- Solar Wind Speed
-- Solar Wind Density
-- Solar Wind Temperature
-- Planetary Kp Index
+- Solar wind speed
+- Solar wind density
+- Proton temperature
+- Planetary Kp index
 - Interplanetary Magnetic Field (IMF Bz)
-- Aurora Visibility Probability
+- Experimental aurora activity indicator
+- GOES-16 satellite imagery
 
+DATA SOURCES:
 
-Real astronomical data becomes part of a creative narrative
-experience.
+NOAA Space Weather Prediction Center (SWPC)
+NOAA GOES-16 imagery services
 
-
-============================================================
-
-EDUCATIONAL PURPOSE:
-
-This project is designed for university students studying:
-
-- Digital Art
-- Web Design
-- Creative Coding
-- Interactive Media
-- Data Visualization
-- Front-End Development
-- Digital Storytelling
-
-
-Students explore how technology can transform scientific
-information into immersive visual experiences.
-
-
-============================================================
-
-PROGRAMMING LANGUAGES & TECHNOLOGIES:
+TECHNOLOGIES:
 
 HTML5
-- Semantic structure
-- Accessibility
-- SEO optimization
-
-
 CSS3
-- Interface design
-- Responsive layouts
-- Visual atmosphere
-- Animations and effects
-
-
 JavaScript ES6+
-- API communication
-- Real-time data processing
-- Dynamic visualization
-- Interactive elements
-
-
-External Technology:
-
-NOAA Space Weather API
-- Real-time astronomical data
-- Solar activity monitoring
-
-
-============================================================
-
-LEARNING OBJECTIVES:
-
-Students learn:
-
-✓ How to connect websites with scientific APIs
-
-✓ How to visualize real-world data
-
-✓ How programming can support artistic expression
-
-✓ How astronomy and technology can inspire digital narratives
-
-✓ How interactive design can create educational experiences
-
-
-============================================================
-
-PROJECT CATEGORY:
-
-Maneko Neki Universe
-Creative Technology Laboratory
-Interactive Web Experience
-Scientific Data Visualization
-Digital Art Experiment
-
-
-============================================================
 
 PROJECT STATUS:
 
-Currently under development.
+Early development / Experimental prototype.
 
-Northern Light Research Station is an evolving digital
-experiment within the Maneko Neki Universe. New features,
-visual improvements and interactive elements are continuously
-being developed as the project expands.
+IMPORTANT:
 
+The experimental aurora indicator is a custom
+rule-based calculation and is not a scientifically
+validated probability forecast.
+
+Satellite imagery and decorative visualizations
+must not be confused with orbital tracking systems.
 
 ============================================================
-
 -->
-
 
 <style>
 
