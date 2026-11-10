@@ -498,6 +498,49 @@ pre{
 
 }
 
+
+/* ==========================================
+   GEOGRAPHIC STATION LOCATION
+========================================== */
+
+.station-location {
+    width: min(340px, 90%);
+    margin: 20px auto;
+    padding: 18px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.station-location h3 {
+    color: #0f172a;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.station-location p {
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.coordinates {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 14px 0;
+    color: #0369a1;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.location-description {
+    font-size: 0.8rem !important;
+    line-height: 1.5;
+}
+
+
     /* ==========================================
    FOOTER
 ========================================== */
@@ -1022,6 +1065,31 @@ Real-time Earth observation from Costa Rica, featuring satellite imagery, solar 
 
 
 </div>
+
+
+<!-- GEOGRAPHIC STATION LOCATION -->
+
+<div class="station-location">
+
+    <h3>📍 Station Location</h3>
+
+    <p><strong>San José, Costa Rica</strong></p>
+
+    <div class="coordinates">
+
+        <span>Latitude: 9.9281° N</span>
+
+        <span>Longitude: 84.0907° W</span>
+
+    </div>
+
+    <p class="location-description">
+        Geographic reference coordinates for Earth observation
+        and local astronomical calculations.
+    </p>
+
+</div>
+
 
         <!-- TIME PANEL -->
         <!-- =====================================
