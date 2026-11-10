@@ -815,7 +815,119 @@ Timestamp of the latest received space weather data.
 
 </section>
 
+<!-- ==========================================
+     PYTHON RESEARCH DATA
+========================================== -->
 
+<section class="dashboard-grid">
+
+    <!-- JSON CONNECTION -->
+
+    <div class="info-card">
+
+        <h3>🐍 Python Research Data</h3>
+
+        <div id="jsonStatus" class="value">
+            Connecting...
+        </div>
+
+        <p>
+            Data received from Northern-ResearchStation.
+        </p>
+
+    </div>
+
+
+    <!-- MAXIMUM KP -->
+
+    <div class="info-card">
+
+        <h3>📈 Historical Maximum Kp</h3>
+
+        <div id="historicalMaxKp" class="value">
+            Loading...
+        </div>
+
+        <p>Maximum recorded geomagnetic index.</p>
+
+    </div>
+
+
+    <!-- MINIMUM KP -->
+
+    <div class="info-card">
+
+        <h3>📉 Historical Minimum Kp</h3>
+
+        <div id="historicalMinKp" class="value">
+            Loading...
+        </div>
+
+        <p>Minimum recorded geomagnetic index.</p>
+
+    </div>
+
+
+    <!-- AVERAGE KP -->
+
+    <div class="info-card">
+
+        <h3>📊 Historical Average Kp</h3>
+
+        <div id="historicalAvgKp" class="value">
+            Loading...
+        </div>
+
+        <p>Average Kp across historical records.</p>
+
+    </div>
+
+
+    <!-- MEASUREMENTS -->
+
+    <div class="info-card">
+
+        <h3>📡 Historical Measurements</h3>
+
+        <div id="historicalMeasurements" class="value">
+            Loading...
+        </div>
+
+        <p>Total analyzed historical measurements.</p>
+
+    </div>
+
+
+    <!-- LATEST CLASSIFICATION -->
+
+    <div class="info-card">
+
+        <h3>🌍 Latest Geomagnetic Classification</h3>
+
+        <div id="latestClassification" class="value">
+            Loading...
+        </div>
+
+        <p>Classification from the latest NOAA analysis.</p>
+
+    </div>
+
+
+    <!-- JSON UPDATE -->
+
+    <div class="info-card">
+
+        <h3>🕒 Python Data Last Update</h3>
+
+        <div id="jsonUpdated" class="value">
+            Loading...
+        </div>
+
+        <p>Last JSON export timestamp.</p>
+
+    </div>
+
+</section>
 
 <section class="connection-panel">
 
@@ -1162,6 +1274,97 @@ and Aurora Borealis visibility opportunities.
 
 
 <script>
+
+
+// ==========================================
+// NORTHERN RESEARCH STATION - JSON CONNECTION
+// ==========================================
+
+const JSON_URL =
+"https://raw.githubusercontent.com/gloriacitizen00-dev/Northern-ResearchStation/main/data/northernlight.json";
+
+
+async function loadResearchJSON() {
+
+    const statusElement =
+        document.getElementById("jsonStatus");
+
+    try {
+
+        const response = await fetch(JSON_URL, {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                "JSON server error: " + response.status
+            );
+        }
+
+        const data = await response.json();
+
+        // HISTORICAL STATISTICS
+
+        const statistics = data.statistics;
+
+        document.getElementById("historicalMaxKp")
+            .textContent = statistics.maximum_kp;
+
+        document.getElementById("historicalMinKp")
+            .textContent = statistics.minimum_kp;
+
+        document.getElementById("historicalAvgKp")
+            .textContent = statistics.average_kp;
+
+        document.getElementById("historicalMeasurements")
+            .textContent = statistics.measurements_analyzed;
+
+
+        // LATEST NOAA ANALYSIS
+
+        const latest = data.latest_noaa.latest_measurement;
+
+        document.getElementById("latestClassification")
+            .textContent = latest.classification;
+
+
+        // JSON UPDATE TIME
+
+        document.getElementById("jsonUpdated")
+            .textContent = new Date(
+                data.updated_at
+            ).toLocaleString();
+
+
+        // CONNECTION STATUS
+
+        statusElement.textContent = "CONNECTED";
+
+        statusElement.style.color = "#059669";
+
+
+        console.log(
+            "Northern Research Station JSON loaded successfully",
+            data
+        );
+
+    }
+
+    catch (error) {
+
+        statusElement.textContent = "CONNECTION ERROR";
+
+        statusElement.style.color = "#dc2626";
+
+        console.error(
+            "Research JSON error:",
+            error
+        );
+
+    }
+
+}
+
 let auroraData = {
 
     speed:0,
@@ -1483,6 +1686,8 @@ async function startAuroraStation(){
     await getKpIndex();
     await getIMFBz();
 
+    await loadResearchJSON();
+
     calculateAuroraProbability();
 
 }
@@ -1494,6 +1699,8 @@ setInterval(async()=>{
     await getSolarWind();
     await getKpIndex();
     await getIMFBz();
+
+    await loadResearchJSON();
 
     calculateAuroraProbability();
 
