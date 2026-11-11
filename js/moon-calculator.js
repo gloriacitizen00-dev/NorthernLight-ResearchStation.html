@@ -23,7 +23,7 @@ Synodic Month: 29.53058867 days
     const SYNODIC_MONTH = 29.53058867;
 
 const KNOWN_NEW_MOON = new Date(
-    "2026-11-09T07:02:00Z"
+    "2000-01-06T18:14:00Z"
 );
     function calculateMoonData(date = new Date()) {
 
