@@ -557,31 +557,46 @@ pre{
    WORLD MAP CONTAINER
 ========================================== */
 
+
+/* ==========================================
+   WORLD MAP CONTAINER
+========================================== */
+
 .world-map {
     position: relative;
+    width: min(850px, 95%);
+    aspect-ratio: 2 / 1;
     overflow: hidden;
+    margin: 0 auto;
 }
 
 .world-map img {
     display: block;
+    position: absolute;
+    inset: 0;
     width: 100%;
-    height: auto;
-}
-
-.world-map img {
-    display: block;
-    position: relative;
+    height: 100%;
+    object-fit: contain;
     z-index: 1;
-    width: 100%;
-    height: auto;
 }
+
+/* REAL-TIME AURORA OVERLAY */
 
 #auroraOverlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
     z-index: 2;
 }
 
+/* AURORA ZONES */
+
 .aurora-band {
+    position: absolute;
     z-index: 3;
+    pointer-events: none;
 }
 
 
@@ -1210,9 +1225,9 @@ and Aurora Borealis visibility opportunities.
         <div class="world-map">
              <canvas id="auroraOverlay"></canvas>
 
-            <img
-            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-            alt="World Map">
+        <img
+             src="world-equirectangular.svg"
+             alt="World Map">
 
             <!-- AURORA ZONES -->
 
