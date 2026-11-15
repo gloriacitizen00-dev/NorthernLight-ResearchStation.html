@@ -1814,6 +1814,65 @@ async function getIMFBz(){
 
 }
 
+
+function updateAuroraZone(){
+
+    if(
+        !auroraData.solarWindOK ||
+        !auroraData.kpOK ||
+        !auroraData.bzOK
+    ){
+
+        document.getElementById("auroraZone").innerHTML = "--";
+
+        document.getElementById("auroraExplanation").innerHTML =
+        "Waiting for complete NOAA data...";
+
+        return;
+    }
+
+    const kp = Number(auroraData.kp);
+    const speed = Number(auroraData.speed);
+    const density = Number(auroraData.density);
+    const bz = Number(auroraData.bz);
+
+    let activity;
+    let explanation;
+
+    if(kp <= 2){
+
+        activity = "Low Activity";
+
+    }
+    else if(kp <= 4){
+
+        activity = "Moderate Activity";
+
+    }
+    else if(kp <= 6){
+
+        activity = "High Activity";
+
+    }
+    else{
+
+        activity = "Very High Activity";
+
+    }
+
+    explanation =
+    `Geomagnetic activity: ${activity}. ` +
+    `Kp: ${kp} | Solar Wind: ${speed} km/s | ` +
+    `Density: ${density} p/cm³ | Bz: ${bz} nT.`;
+
+    document.getElementById("auroraZone").innerHTML =
+    activity;
+
+    document.getElementById("auroraExplanation").innerHTML =
+    explanation;
+
+}
+
     
 document.getElementById("status").innerHTML =
 "Starting NOAA...";
@@ -1874,6 +1933,7 @@ async function startAuroraStation(){
     calculateAuroraProbability();
 
 }
+updateAuroraZone();
 
 startAuroraStation();
 
@@ -1887,6 +1947,17 @@ setInterval(async()=>{
     await loadResearchJSON();
 
     calculateAuroraProbability();
+
+    setInterval(async()=>{
+
+    await getSolarWind();
+    await getKpIndex();
+    await getIMFBz();
+
+    calculateAuroraProbability();
+    updateAuroraZone();
+
+},60000);
 
 },60000);
 
