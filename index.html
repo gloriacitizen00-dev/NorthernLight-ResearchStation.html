@@ -1530,8 +1530,6 @@ async function getSolarWind(){
         "https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json"
         );
 
-        alert("NOAA response received");
-
         if(!response.ok){
 
             throw new Error(
@@ -1931,10 +1929,10 @@ async function startAuroraStation(){
     await loadResearchJSON();
 
     calculateAuroraProbability();
+    updateAuroraZone();
 
 }
-updateAuroraZone();
-
+    
 startAuroraStation();
 
 setInterval(async()=>{
@@ -1947,18 +1945,8 @@ setInterval(async()=>{
     await loadResearchJSON();
 
     calculateAuroraProbability();
-
-    setInterval(async()=>{
-
-    await getSolarWind();
-    await getKpIndex();
-    await getIMFBz();
-
-    calculateAuroraProbability();
     updateAuroraZone();
-
-},60000);
-
+    
 },60000);
 
 </script>
