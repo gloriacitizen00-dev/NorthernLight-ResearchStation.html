@@ -1873,6 +1873,83 @@ async function getAuroraOVATION(){
 
 }
 
+
+function drawAuroraOVATION() {
+
+    const canvas = document.getElementById("auroraOverlay");
+    const mapImage = document.querySelector(".world-map img");
+    const coordinates = window.auroraOVATION;
+
+    if (!canvas || !mapImage || !coordinates?.length) {
+        console.warn("Aurora renderer: waiting for NOAA data or map.");
+        return;
+    }
+
+    if (!mapImage.complete || !mapImage.naturalWidth) {
+        console.warn("Aurora renderer: map image not ready.");
+        return;
+    }
+
+    const width = mapImage.naturalWidth;
+    const height = mapImage.naturalHeight;
+
+    canvas.width = width;
+    canvas.height = height;
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, width, height);
+
+    const cellWidth = width / 360;
+    const cellHeight = height / 180;
+
+    let rendered = 0;
+
+    for (const point of coordinates) {
+
+        // NOAA format: [longitude, latitude, intensity]
+
+        const [longitude, latitude, intensity] = point;
+
+        if (
+            !Number.isFinite(longitude) ||
+            !Number.isFinite(latitude) ||
+            !Number.isFinite(intensity) ||
+            intensity <= 0
+        ) {
+            continue;
+        }
+
+        const x = ((longitude + 180) % 360) / 360 * width;
+
+        const y = Math.min(
+            (90 - latitude) / 180 * height,
+            height - cellHeight
+        );
+
+        const strength = Math.min(intensity, 16) / 16;
+
+        const alpha = 0.08 + strength * 0.65;
+
+        ctx.fillStyle = `rgba(0, 255, 100, ${alpha})`;
+
+        ctx.fillRect(
+            x,
+            y,
+            cellWidth + 0.5,
+            cellHeight + 0.5
+        );
+
+        rendered++;
+    }
+
+    console.log("OVATION MAP RENDERED:", {
+        totalCoordinates: coordinates.length,
+        renderedCells: rendered,
+        canvasWidth: canvas.width,
+        canvasHeight: canvas.height
+    });
+}
     
 async function startAuroraStation(){
 
